@@ -1,6 +1,8 @@
 # Haken
 
-A very simple gem for defining places where additional content can be injected from elsewhere.
+A very simple gem for extending views by injecting additional content.
+
+When building applications that use the [bounded context](https://martinfowler.com/bliki/BoundedContext.html) pattern, there can be situations when a context A influences the presentation logic of context B. This library is an experiment of introducing a pseudo PubSub architecture for injecting front-end views to solve these types of problems.
 
 ## Installation
 
@@ -31,3 +33,9 @@ module MyEngine
   end
 end
 ```
+
+## Roadmap
+
+We currently only support simple injections without any control over priority (if there are two *subscriptions* for a view hook, the priority they will be rendered in depends on the initialization sequence of the Rails engines they are defined in).
+
+Next step for improving this library is to introduce a priority system.
